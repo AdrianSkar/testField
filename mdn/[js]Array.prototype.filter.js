@@ -1,6 +1,6 @@
 /// Searching in array 
 
-let fruits = ['apple', 'banana', 'grapes', 'mango', 'orange']
+let fruits = ['apple', 'banana', 'grapes', 'mango', 'orange'];
 
 /**
  * Filter array items based on search criteria (query)
