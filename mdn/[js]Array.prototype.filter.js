@@ -14,5 +14,6 @@ function filterItems(arr, query) {
 console.log(filterItems(fruits, 'ap'));  // ['apple', 'grapes']
 console.log(filterItems(fruits, 'an'));  // ['banana', 'mango', 'orange']
 
-////////////////////////////////////////////////////////////////////////////////
+//______________________________________________________________________________
+
 
