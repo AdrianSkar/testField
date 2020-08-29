@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Increase/decrease fontSize</title>
+	<style>
+		body {
+			font-size: 12px;
+		}
+
+		h2 {
+			font-size: 1.5rem;
+		}
+
+		p {
+			font-size: 1em;
+		}
+	</style>
+</head>
+
+<body>
+	<h1>Increase/decrease fontSize</h1>
+	<header>
+		<button id='sizeP'>+</button>
+		<button id='sizeM'>-</button>
+		<button id='reset'>reset</button>
+	</header>
+	<main>
+		<h2>H2 header</h2>
+		<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta autem cum, veritatis expedita molestias quia
+			quisquam, repellat nulla iste molestiae aliquid, natus optio esse eos minima perspiciatis. Deserunt, assumenda
+			vitae?Lorem ipsum dolor sit, amet consectetur adipisicing elit. Non eligendi repudiandae nesciunt eveniet
+			necessitatibus, similique totam perferendis ex quidem sint autem ullam vero quod optio harum blanditiis ea
+			consequuntur dolor?</p>
+		<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta autem cum, veritatis expedita molestias quia
+			quisquam, repellat nulla iste molestiae aliquid, natus optio esse eos minima perspiciatis. Deserunt, assumenda
+			vitae?Lorem ipsum dolor sit, amet consectetur adipisicing elit. Non eligendi repudiandae nesciunt eveniet
+			necessitatibus, similique totam perferendis ex quidem sint autem ullam vero quod optio harum blanditiis ea
+			consequuntur dolor?</p>
+		<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta autem cum, veritatis expedita molestias quia
+			quisquam, repellat nulla iste molestiae aliquid, natus optio esse eos minima perspiciatis. Deserunt, assumenda
+			vitae?Lorem ipsum dolor sit, amet consectetur adipisicing elit. Non eligendi repudiandae nesciunt eveniet
+			necessitatibus, similique totam perferendis ex quidem sint autem ullam vero quod optio harum blanditiis ea
+			consequuntur dolor?</p>
+	</main>
+	<script>
+		let plus = document.getElementById('sizeP');
+		let minus = document.getElementById('sizeM');
+		let reset = document.getElementById('reset');
+		let body = document.querySelector('body');
+		let size = window.getComputedStyle(body).getPropertyValue('font-size');
+		let parsedSize = parseInt(size);
+
+		reset.addEventListener('click', () => {
+			document.body.style.fontSize = size;
+		});
+		// plus.addEventListener('click', () => {
+		// 	document.body.style.fontSize = (parsedSize += 2) + 'px';
+		// });
+		// minus.addEventListener('click', () => {
+		// 	document.body.style.fontSize = (parsedSize -= 2) + 'px';
+		// });
+		function changer(val) {
+			document.body.style.fontSize = (parsedSize += val) + 'px';
+		}
+
+		plus.addEventListener('click', () => { changer(2) });// thecallback function for event listeners will only pass the event as a parameter. In order to pass your own you have to wrap your function inside an anonymous one 
+		minus.addEventListener('click', () => { changer(-2) });
+
+	</script>
+</body>
+
+</html>
