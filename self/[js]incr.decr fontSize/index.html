@@ -46,9 +46,16 @@
 			consequuntur dolor?</p>
 	</main>
 	<script>
-		let plus = document.getElementById('sizeP');
-		let minus = document.getElementById('sizeM');
-		let reset = document.getElementById('reset');
+		// function getId(id) {
+		// 	return document.getElementById(id);
+		// }
+		const getId = id => document.getElementById(id);
+
+		// let plus = document.getElementById('sizeP');
+		// let minus = document.getElementById('sizeM');
+		// let reset = document.getElementById('reset');
+		let plus = getId('sizeP'), minus = getId('sizeM'), reset = getId('reset');
+
 		let body = document.querySelector('body');
 		let size = window.getComputedStyle(body).getPropertyValue('font-size');
 		let parsedSize = parseInt(size);
@@ -62,11 +69,13 @@
 		// minus.addEventListener('click', () => {
 		// 	document.body.style.fontSize = (parsedSize -= 2) + 'px';
 		// });
-		function changer(val) {
-			document.body.style.fontSize = (parsedSize += val) + 'px';
-		}
 
-		plus.addEventListener('click', () => { changer(2) });// thecallback function for event listeners will only pass the event as a parameter. In order to pass your own you have to wrap your function inside an anonymous one 
+		// function changer(val) {
+		// 	document.body.style.fontSize = (parsedSize += val) + 'px';
+		// }
+		let changer = val => document.body.style.fontSize = (parsedSize += val) + 'px';
+
+		plus.addEventListener('click', () => { changer(2) });// The callback function for event listeners will only pass the event as a parameter. In order to pass your own ones you have to wrap your function inside an anonymous one.
 		minus.addEventListener('click', () => { changer(-2) });
 
 	</script>
