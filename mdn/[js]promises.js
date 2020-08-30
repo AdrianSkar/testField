@@ -1,4 +1,26 @@
 
+///Basic example
+
+let myPromise = new Promise((resolve, reject) => {
+	//Call resolve(...) when what we were doing asynchronously was successful and reject(...) when it failed. This example uses setTimeout(...) to simulate async code.
+	setTimeout(function () {
+		resolve('Success!');
+		//reject('Failed!');
+	}, 250);
+});
+
+myPromise.then(successMessage => {
+	//successMessage is whatever we passes in the resolve(...) function above.
+	console.log('Yes: ' + successMessage);
+})
+	.catch(rejectMessage => {
+		console.log('No: ' + rejectMessage);
+	});
+
+
+//______________________________________________________________________________
+
+
 createAudioFileAsync(audioSettings).then(successCallback, failureCallback);
 
 // shorthand for:
@@ -56,13 +78,22 @@ Promise.all([func1(), func2(), func3()])
 // We reduced an arr of async functions down to a promise chain equivalent to:
 Promise.resolve().then(func1).then(func2).then(func3);
 
+//______________________________________________________________________________
 
+const promiseA = new Promise((resolutionFunc, rejectionFunc) => {
+	resolutionFunc(777);
+});
+//At this point, 'promiseA' is already settled.
+promiseA.then(val => console.log('asynchronous logging has val:', val));
+console.log('immediate logging');
 
-
+//'immediate logging'
+//'asynchronous logging has val: 777
 
 
 //______________________________________________________________________________
 
 /* Refs:
  - https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Using_promises
+ - https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise
   */
