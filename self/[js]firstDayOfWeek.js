@@ -1,11 +1,26 @@
-let curr = new Date(); //current date
-// calculate the first day of the week: https://stackoverflow.com/questions/5210376/how-to-get-first-and-last-day-of-the-week-in-javascript/26922029
-let firstDayWeek = curr.getDate() - curr.getDay() + 1;
-let startDay = new Date(curr.setDate(firstDayWeek));
-console.log(startDay);
 
-// set start to 00:00:00 of the first day of the week
-let start = (new Date(curr.getFullYear(), curr.getMonth(), startDay.getDate(), 0, 0, 0)).toISOString();
+// calculate the first day of the week: https://stackoverflow.com/a/4156516/3383507
 
-let end = new Date(); // can't use curr because its been modified by curr.setDate()
-end = end.toISOString();
+let today = new Date();
+console.log(today);
+
+let getMonday = (today) => {
+	const d = new Date(today),
+		day = d.getDay();
+	// calculate the day to set as monday (0)
+	const diff = d.getDate() - day + (day === 0 ? -6 : 1); //adjust for sundays
+	console.log(day, diff);
+	return new Date(d.setDate(diff));
+};
+
+// function getMonday(d) {
+// 	d = new Date(d);
+// 	var day = d.getDay(),
+// 		diff = d.getDate() - day + (day == 0 ? -6 : 1); // adjust when day is sunday
+// 	return new Date(d.setDate(diff));
+// }
+
+console.log(getMonday(today));
+
+
+
