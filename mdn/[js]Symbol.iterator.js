@@ -121,7 +121,7 @@ console.log(iterator2.next());
 console.log(iterator2.next());
 console.log(iterator2.next());
 
-///Using a function as prop value to pass an object
+/// Using a function as prop value to pass an object
 
 let obj3 = { prop1: 'testA', prop2: 'testB' };
 let iterable3 = {
@@ -150,6 +150,38 @@ let iterator3 = iterable3[Symbol.iterator](obj3);
 console.log(iterator3.next());
 console.log(iterator3.next());
 console.log(iterator3.next());
+
+/// Same without knowing how many props the object has
+
+let obj4 = { prop1: 'testA', prop2: 'testB', prop4: 'testC' };
+console.log(Object.keys(obj4).length);
+console.log(Object.keys(obj4));
+
+let iterable4 = {
+	[Symbol.iterator]: function (obj) {// this uses a function to pass an object
+		let count = -1;
+		let arr = Array.from(Object.keys(obj));
+		console.log(arr);
+		const iterator = {
+			next() {
+				count++;
+				if (arr[count]) {
+					return { value: obj[arr[count]], done: false };
+				}
+				return { value: undefined, done: true };
+			}
+		};
+		return iterator;
+	}
+};
+
+let iterator4 = iterable4[Symbol.iterator](obj4);
+
+console.log(iterator4.next());
+console.log(iterator4.next());
+console.log(iterator4.next());
+console.log(iterator4.next());
+
 
 /*
 Refs:
