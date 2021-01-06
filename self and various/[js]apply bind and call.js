@@ -1,8 +1,8 @@
 // Without strict mode "this" will default to the Global/Window object
 // 'use strict';
-//? func.apply(thisArg [, argsArray])
-//? func.call(thisArg [, arg1, arg2...]) 
-//? func.bind(thisArg [, arg1, arg2...])
+//| func.apply(thisArg [, argsArray])
+//| func.call(thisArg [, arg1, arg2...]) 
+//| func.bind(thisArg [, arg1, arg2...])
 
 let bob = function (num, str, x) {
 	console.log('bob', num, str, this, x);
