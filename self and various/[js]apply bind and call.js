@@ -42,6 +42,14 @@ console.log(max);
 console.log(Math.max(...arr));
 //! const spread = ...arr // syntax err
 
+// You can get the first param fixed with bind so you could create a new function
+let maximum = Function.prototype.apply.bind(Math.max, null);
+let maximum_value = maximum([1, 2, 3]);
+console.log(maximum_value);
+
+// instead of:
+let maximumOld = Math.max.apply(null, [1, 2, 3]);
+
 //______________________________________________________________________________
 /* Refs:
 https://www.youtube.com/watch?v=uBdH0iB1VDM&list=PLyuRouwmQCjkYdv4VjuIbvcMZVWSdOm58&index=58
