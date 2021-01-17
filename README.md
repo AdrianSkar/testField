@@ -6,8 +6,8 @@ ___
 
 ### Files and naming schema
 
-source/[topic/s]subject
+[topic/s]/subject
 
 eg:
 
-	courses/[html/css]fcc
+	js/classes

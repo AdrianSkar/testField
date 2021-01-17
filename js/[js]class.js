@@ -31,6 +31,7 @@ console.log(testSquare);
 
 /*
 You can also define a class using a class expression. But unlike a class expression, a class declaration doesn't allow an existing class to be declared again and will throw a SyntaxError if attempted.
+https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/class
 */
 ///Class expression:
 
@@ -64,5 +65,6 @@ console.log(bar.whoIsThere());
 console.log(Foo.name);
 // console.log(NamedFoo.name); // not defined
 
+// Other refs:
 //https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/class
-
+// https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes
