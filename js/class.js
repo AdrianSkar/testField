@@ -10,6 +10,12 @@ class Polygon {
 		this.area = height * width;
 		this.name = 'polygon';
 	}
+	methodA() {
+		console.log('parent');
+	}
+	static statMethod() {
+		console.log('Show me on class, not on instances');
+	}
 }
 
 let test = new Polygon(8, 4);
@@ -17,16 +23,22 @@ let test = new Polygon(8, 4);
 console.log(test);
 console.log(test.area);
 console.log(new Polygon(4, 3));
+Polygon.statMethod();
 
 class Square extends Polygon {
 	constructor(length) {
 		super(length, length);
 		this.name = 'square';
 	}
+	methodA() { // Redefine parent method (aka polymorphism)
+		console.log(this.name);
+		super.methodA();
+	}
 }
 let testSquare = new Square(4);
 
 console.log(testSquare);
+testSquare.methodA();
 
 
 /*
