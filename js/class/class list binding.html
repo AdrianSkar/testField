@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Classes in practice</title>
+	<!-- https://www.youtube.com/watch?v=2ZphE5HcQPQ&t=1587s -->
+
+</head>
+
+<body>
+	<h1>Classes: list binding</h1>
+	<ul id="myList">
+		<li>2</li>
+		<li>3</li>
+		<li>4</li>
+	</ul>
+
+	<script>
+
+		class ListBinding {
+			constructor(list) {
+				this.listElement = list;
+				this.textList = ['test', 'test2'];
+			}
+			static createListItem(text) {// Makes an <li> element
+				const li = document.createElement('li');
+				li.textContent = text;
+				return li;
+			}
+			update() {
+				/* Remove existing <li> elements */
+				while (this.listElement.firstChild) {
+					this.listElement.removeChild(this.listElement.firstChild);
+				}
+
+				/* Fill <ul> with <li>'s */
+				for (const text of this.textList) {
+					this.listElement.appendChild(ListBinding.createListItem(text));
+					// remember that to call a static method you need to use the class
+					// NOT the instance.
+				}
+			}
+
+			add(text) {
+				this.textList.push(text);
+				this.update();
+			}
+
+			remove(index) {
+				this.textList.splice(index, 1);
+				this.update();
+			}
+		}
+		const myList = document.getElementById('myList');
+		const myListBind = new ListBinding(myList);
+	</script>
+</body>
+
+</html>
