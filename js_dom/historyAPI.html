@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>History API</title>
+	<script>
+
+
+		// Output onpopstate location and state
+		window.onpopstate = event => {
+			const output = document.querySelector('#output');
+			// output.append(`document.location: ${document.location}<br>`)
+			output.append(`onpopstate state: ${JSON.stringify(event.state)}<br>`)
+		}
+
+		document.addEventListener('DOMContentLoaded', function () {
+			const output = document.querySelector('#output');
+
+			// read state
+			document.querySelector('#state').onclick = function () {
+				const p = document.createElement('p');
+				p.append(`Current state: ${JSON.stringify(history.state)}`)
+				output.append(p);
+			}
+
+			// push rand urls when clicking on pushState
+			document.querySelector('#pushState').onclick = function () {
+				const p = document.createElement('p');
+				let rand5 = Math.ceil(Math.random() * 5);
+
+				history.pushState(
+					{ 'url': rand5 },
+					`title${rand5}`,
+					`${document.location}?url=${rand5}`
+				)
+				p.append(`pushed: url=${rand5}`)
+				output.append(p)
+			}
+
+			// replace with rand urls when clicking on replaceState
+			document.querySelector('#replaceState').onclick = function () {
+				const p = document.createElement('p');
+				let rand5 = Math.ceil(Math.random() * 5);
+
+				history.replaceState(
+					{ 'url': rand5 },
+					`title${rand5}`,
+					`${document.location}?url=${rand5}`
+				)
+				p.append(`replaced with: url=${rand5}`)
+				output.append(p)
+			}
+		})
+
+	</script>
+</head>
+
+<body>
+	<div id="onpopstate">
+		<h2>onpopstate</h2>
+		<p>Event handler for processing popstate* events: <br><code>window.onpopstate = funcRef</code></p>
+		<p>The current state can be read using <button id='state'>history.state</button></p>
+		<small>
+			*<q>dispatched to the window each time the active history entry changes between two history entries for the same
+				document but is only triggered by performing a browser action.</q>
+		</small>
+	</div>
+	<h2>pushState</h2>
+	<p>Adds an entry to the browser's session history stack</p>
+	<button id="pushState">pushState</button>
+	<h2>replaceState</h2>
+	<p>Modifies the current history entry with the specified parameters</p>
+	<button id="replaceState">replaceState</button>
+	<div id="output">
+		<h2>Outputs:</h2>
+	</div>
+</body>
+
+</html>
