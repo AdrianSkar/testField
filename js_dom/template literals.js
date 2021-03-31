@@ -17,12 +17,19 @@ console.log(regularStr);
 let rawStr = String.raw`raw string without a tab \t and a newline \n`;
 console.log(rawStr);
 
+/// If a value is not a string, the engine will internally create a string 
+///  representation of it (like calling .toString()):
+const obj = { a: 1, b: 2 }
+console.log(obj);
+console.log(`Obj is ${obj}`);
+console.log(`Obj is ${JSON.stringify(obj)}`);
+
 /*
 tagged template literals (used to manipulate order/parts you want to return)
 Tags allow you to parse template literals with a function. The first argument of a tag function contains an array of string values. The remaining arguments are related to the expressions.
 */
 
-let first = 'pinneaple';
+let first = 'pineapple';
 let second = 'tomato';
 let txt = myTag`I don't like pizza with ${first} and ${second}.`
 function myTag(strings, ...expressions) {
