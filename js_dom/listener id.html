@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<script>
+		document.addEventListener('DOMContentLoaded', (event) => {
+			document.querySelector('.select_me').addEventListener('click', function () {
+				const output = document.querySelector('#output');
+				console.log(event);
+				console.log(test_id);
+				console.log(gparent_id);
+				console.log(body_id);
+				output.innerHTML += `
+				test_id (the button) is: ${test_id}<br>
+				gparent_id (the 'grandparent') is: ${gparent_id}<br>
+				body_id (the body) is: ${body_id}<br>
+				
+				`;
+			})
+		});
+	</script>
+</head>
+
+<body id='body_id'>
+	<div id='gparent_id'>
+		<div>
+			<button id="test_id" class='select_me'>Click me</button>
+		</div>
+	</div>
+	<div id="output">
+
+	</div>
+	<div>
+		<a href="https://www.reddit.com/r/webdev/comments/ng6h3s/html_how_is_it_possible_to_select_elements_just/">Posted on
+			reddit</a>
+	</div>
+</body>
+
+</html>
